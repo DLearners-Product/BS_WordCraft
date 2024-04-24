@@ -91,6 +91,7 @@ public class AudioManager : GenericSingleton<AudioManager>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             THI_AudioSettings();
+            
         }
     }
 
