@@ -91,7 +91,7 @@ public class AudioManager : GenericSingleton<AudioManager>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             THI_AudioSettings();
-            
+
         }
     }
 
@@ -206,6 +206,11 @@ public class AudioManager : GenericSingleton<AudioManager>
         AS_Voice.PlayOneShot(clip);
     }
 
+
+    public void StopVoice()
+    {
+        AS_Voice.Stop();    
+    }
 
 
 

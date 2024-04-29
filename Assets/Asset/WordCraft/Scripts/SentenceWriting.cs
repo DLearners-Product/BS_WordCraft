@@ -60,7 +60,7 @@ public class SentenceWriting : MonoBehaviour
 
     public void ShowCurrent()
     {
-        // IMG_Placeholder.sprite = SPRA_Images[I_CurrentIndex];
+        IMG_Placeholder.sprite = SPRA_Images[I_CurrentIndex];
         TXT_Sentence.text = STRA_Sentences[I_CurrentIndex];
     }
 

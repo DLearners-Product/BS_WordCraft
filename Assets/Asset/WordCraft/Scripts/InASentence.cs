@@ -33,7 +33,11 @@ public class InASentence : MonoBehaviour
     }
 
 
-    public void BUT_Next() { StartCoroutine(IENUM_ShowNextQuestion()); }
+    public void BUT_Next()
+    {
+        AudioManager.Instance.PlaySFX(AC_Click);
+        StartCoroutine(IENUM_ShowNextQuestion());
+    }
 
 
     IEnumerator IENUM_ShowNextQuestion()

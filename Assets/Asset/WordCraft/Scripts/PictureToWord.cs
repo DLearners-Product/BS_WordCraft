@@ -104,8 +104,6 @@ public class PictureToWord : MonoBehaviour
 
 
 
-
-
     #region public functions
 
 
@@ -156,7 +154,6 @@ public class PictureToWord : MonoBehaviour
     }
 
 
-
     public void BUT_Check()
     {
         switch (I_CurrentIndex)
@@ -164,6 +161,7 @@ public class PictureToWord : MonoBehaviour
             case 0:
                 if (IF_Q1[0].text.ToLower().Equals("s") && IF_Q1[1].text.ToLower().Equals("n"))
                 {
+                    AudioManager.Instance.PlayVoice(ACA_Words[0]);
                     PlayAnim(0, "matched");
                     I_AnswerCount = 0;
                     Invoke(nameof(ShowQuestion), 2.5f);
@@ -177,48 +175,52 @@ public class PictureToWord : MonoBehaviour
             case 1:
                 if (IF_Q2[0].text.ToLower().Equals("i") && IF_Q2[1].text.ToLower().Equals("g"))
                 {
-                    PlayAnim(0, "matched");
+                    AudioManager.Instance.PlayVoice(ACA_Words[1]);
+                    PlayAnim(1, "matched");
                     I_AnswerCount = 0;
                 }
                 else
                 {
-                    PlayAnim(0, "mismatched");
+                    PlayAnim(1, "mismatched");
                 }
                 break;
 
             case 2:
                 if (IF_Q3[0].text.ToLower().Equals("o") && IF_Q3[1].text.ToLower().Equals("y"))
                 {
-                    PlayAnim(0, "matched");
+                    AudioManager.Instance.PlayVoice(ACA_Words[2]);
+                    PlayAnim(2, "matched");
                     I_AnswerCount = 0;
                 }
                 else
                 {
-                    PlayAnim(0, "mismatched");
+                    PlayAnim(2, "mismatched");
                 }
                 break;
 
             case 3:
                 if (IF_Q4[0].text.ToLower().Equals("i") && IF_Q4[1].text.ToLower().Equals("r"))
                 {
-                    PlayAnim(0, "matched");
+                    AudioManager.Instance.PlayVoice(ACA_Words[3]);
+                    PlayAnim(3, "matched");
                     I_AnswerCount = 0;
                 }
                 else
                 {
-                    PlayAnim(0, "mismatched");
+                    PlayAnim(3, "mismatched");
                 }
                 break;
 
             case 4:
                 if (IF_Q5[0].text.ToLower().Equals("e") && IF_Q5[1].text.ToLower().Equals("d"))
                 {
-                    PlayAnim(0, "matched");
+                    AudioManager.Instance.PlayVoice(ACA_Words[4]);
+                    PlayAnim(4, "matched");
                     I_AnswerCount = 0;
                 }
                 else
                 {
-                    PlayAnim(0, "mismatched");
+                    PlayAnim(4, "mismatched");
                 }
                 break;
 
@@ -313,19 +315,71 @@ public class PictureToWord : MonoBehaviour
         }
         else if (I_CurrentIndex == 1)
         {
-
+            if (IF_Q2[0].text.ToLower().Equals("i") && IF_Q2[1].text.ToLower().Equals("g"))
+            {
+                PlayAnim(0, "matched");
+                I_AnswerCount = 0;
+                G_TransparentScreen.SetActive(true);
+                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
+                Invoke(nameof(ShowQuestion), 2.5f);
+                return;
+            }
+            else
+            {
+                PlayAnim(0, "mismatched");
+                I_AnswerCount = 1;
+            }
         }
         else if (I_CurrentIndex == 2)
         {
-
+            if (IF_Q2[0].text.ToLower().Equals("o") && IF_Q2[1].text.ToLower().Equals("y"))
+            {
+                PlayAnim(0, "matched");
+                I_AnswerCount = 0;
+                G_TransparentScreen.SetActive(true);
+                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
+                Invoke(nameof(ShowQuestion), 2.5f);
+                return;
+            }
+            else
+            {
+                PlayAnim(0, "mismatched");
+                I_AnswerCount = 1;
+            }
         }
         else if (I_CurrentIndex == 3)
         {
-
+            if (IF_Q3[0].text.ToLower().Equals("i") && IF_Q3[1].text.ToLower().Equals("r"))
+            {
+                PlayAnim(0, "matched");
+                I_AnswerCount = 0;
+                G_TransparentScreen.SetActive(true);
+                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
+                Invoke(nameof(ShowQuestion), 2.5f);
+                return;
+            }
+            else
+            {
+                PlayAnim(0, "mismatched");
+                I_AnswerCount = 1;
+            }
         }
         else if (I_CurrentIndex == 4)
         {
-
+            if (IF_Q4[0].text.ToLower().Equals("b") && IF_Q4[1].text.ToLower().Equals("e"))
+            {
+                PlayAnim(0, "matched");
+                I_AnswerCount = 0;
+                G_TransparentScreen.SetActive(true);
+                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
+                Invoke(nameof(ShowQuestion), 2.5f);
+                return;
+            }
+            else
+            {
+                PlayAnim(0, "mismatched");
+                I_AnswerCount = 1;
+            }
         }
 
         //------
@@ -346,20 +400,12 @@ public class PictureToWord : MonoBehaviour
         }
 
 
-
-
-
-
         if (IF_Q1[0].text.ToLower().Equals("s") && IF_Q1[1].text.ToLower().Equals("n"))
         {
             TA_Questions[0].GetChild(TA_Questions[0].childCount - 1).gameObject.SetActive(true);
         }
 
-
-
     }
-
-
 
 
 
@@ -401,8 +447,6 @@ public class PictureToWord : MonoBehaviour
                 G_ProceedButton1.SetActive(true);
                 AudioManager.Instance.PlaySFX(AC_Proceed);
             }
-
-
 
         }
         //!wrong answer

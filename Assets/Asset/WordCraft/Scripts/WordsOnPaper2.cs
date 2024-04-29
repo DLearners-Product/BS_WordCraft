@@ -18,6 +18,7 @@ public class WordsOnPaper2 : MonoBehaviour
     void Start()
     {
         I_CurrentIndex = 0;
+        Invoke(nameof(BUT_Speaker), 0.5f);
     }
 
 

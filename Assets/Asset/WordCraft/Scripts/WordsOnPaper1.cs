@@ -1,6 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class WordsOnPaper1 : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class WordsOnPaper1 : MonoBehaviour
     [SerializeField] private GameObject G_NotebookAndNumbers;
     [SerializeField] private GameObject[] GA_Words;
 
+
+    private string[] words = new string[] { "less", "star", "fish", "the", "net" };
     private int I_CurrentIndex;
 
 
@@ -37,26 +40,23 @@ public class WordsOnPaper1 : MonoBehaviour
 
         yield return new WaitForSeconds(ACA_Sentences[1].length + 0.5f);
 
-        for (int i = I_CurrentIndex; i < GA_Words.Length; i++)
+        for (int i = I_CurrentIndex; i < words.Length; i++)
         {
-            PlayWord();
+            string fullText = words[I_CurrentIndex];
+
+            for (int j = 0; j < fullText.Length; j++)
+            {
+                GA_Words[I_CurrentIndex].GetComponent<TextMeshProUGUI>().text += fullText[j];
+
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            AudioManager.Instance.PlayVoice(ACA_Words[I_CurrentIndex]);
+            I_CurrentIndex++;
             yield return new WaitForSeconds(2f);
         }
 
     }
-
-
-    public void PlayWord()
-    {
-        GA_Words[I_CurrentIndex].SetActive(true);
-        AudioManager.Instance.PlayVoice(ACA_Words[I_CurrentIndex]);
-
-        I_CurrentIndex++;
-    }
-
-
-
-
 
 
 
