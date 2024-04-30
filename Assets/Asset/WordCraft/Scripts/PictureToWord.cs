@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
+using UnityEngine.Events;
 
 public class PictureToWord : MonoBehaviour
 {
@@ -18,16 +17,7 @@ public class PictureToWord : MonoBehaviour
     [SerializeField] private AudioClip AC_BubblyButtonClick;
     [SerializeField] private AudioClip AC_Proceed;
 
-
     [Space(10)]
-
-
-    [Header("ANIMATOR---------------------------------------------------------")]
-    [SerializeField] private Animator ANIM_CheckButton;
-
-
-    [Space(10)]
-
 
     [Header("IMAGE---------------------------------------------------------")]
     [SerializeField] private Image[] IMGA_Lines;
@@ -38,10 +28,10 @@ public class PictureToWord : MonoBehaviour
 
     [Header("INPUTFIELD---------------------------------------------------------")]
     [SerializeField] private TMP_InputField[] IF_Q1;
-    [SerializeField] private TMP_InputField[] IF_Q2;
-    [SerializeField] private TMP_InputField[] IF_Q3;
-    [SerializeField] private TMP_InputField[] IF_Q4;
-    [SerializeField] private TMP_InputField[] IF_Q5;
+    /*     [SerializeField] private TMP_InputField[] IF_Q2;
+        [SerializeField] private TMP_InputField[] IF_Q3;
+        [SerializeField] private TMP_InputField[] IF_Q4;
+        [SerializeField] private TMP_InputField[] IF_Q5; */
 
     [Space(10)]
 
@@ -60,13 +50,15 @@ public class PictureToWord : MonoBehaviour
     [SerializeField] private GameObject G_Part3;
     [SerializeField] private GameObject G_ProceedButton1;
     [SerializeField] private GameObject G_ProceedButton2;
+    [SerializeField] private GameObject G_CheckButton;
+    [SerializeField] private GameObject[] GA_Questions;
 
 
     [Space(10)]
 
 
     [Header("TRANSFORM---------------------------------------------------------")]
-    [SerializeField] private Transform[] TA_Questions;
+    [SerializeField] private Transform T_QParent;
 
 
     //!end of region - unity reference variables
@@ -84,6 +76,9 @@ public class PictureToWord : MonoBehaviour
 
     private int I_CurrentIndex;
     private int I_AnswerCount;
+    private bool IF_1Answered, IF_2Answered;
+    private GameObject instantiatedGameObject;
+
 
 
     //!end of region - local variables
@@ -99,7 +94,8 @@ public class PictureToWord : MonoBehaviour
 
         I_CurrentIndex = -1;
         I_AnswerCount = 0;
-
+        IF_1Answered = false;
+        IF_1Answered = false;
     }
 
 
@@ -141,7 +137,7 @@ public class PictureToWord : MonoBehaviour
 
         G_Part1.SetActive(false);
         G_Part2.SetActive(true);
-        Invoke(nameof(ShowQuestion), 2.85f);
+        Invoke(nameof(BUT_Next), 0.5f);
     }
 
 
@@ -162,65 +158,60 @@ public class PictureToWord : MonoBehaviour
                 if (IF_Q1[0].text.ToLower().Equals("s") && IF_Q1[1].text.ToLower().Equals("n"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[0]);
-                    PlayAnim(0, "matched");
-                    I_AnswerCount = 0;
-                    Invoke(nameof(ShowQuestion), 2.5f);
+                    PlayAnim("matched");
                 }
                 else
                 {
-                    PlayAnim(0, "mismatched");
+                    AudioManager.Instance.PlayVoice(AC_Wrong);
+                    PlayAnim("mismatched");
                 }
                 break;
 
             case 1:
-                if (IF_Q2[0].text.ToLower().Equals("i") && IF_Q2[1].text.ToLower().Equals("g"))
+                if (IF_Q1[0].text.ToLower().Equals("i") && IF_Q1[1].text.ToLower().Equals("g"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[1]);
-                    PlayAnim(1, "matched");
-                    I_AnswerCount = 0;
+                    PlayAnim("matched");
                 }
                 else
                 {
-                    PlayAnim(1, "mismatched");
+                    PlayAnim("mismatched");
                 }
                 break;
 
             case 2:
-                if (IF_Q3[0].text.ToLower().Equals("o") && IF_Q3[1].text.ToLower().Equals("y"))
+                if (IF_Q1[0].text.ToLower().Equals("o") && IF_Q1[1].text.ToLower().Equals("y"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[2]);
-                    PlayAnim(2, "matched");
-                    I_AnswerCount = 0;
+                    PlayAnim("matched");
                 }
                 else
                 {
-                    PlayAnim(2, "mismatched");
+                    PlayAnim("mismatched");
                 }
                 break;
 
             case 3:
-                if (IF_Q4[0].text.ToLower().Equals("i") && IF_Q4[1].text.ToLower().Equals("r"))
+                if (IF_Q1[0].text.ToLower().Equals("i") && IF_Q1[1].text.ToLower().Equals("r"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[3]);
-                    PlayAnim(3, "matched");
-                    I_AnswerCount = 0;
+                    PlayAnim("matched");
                 }
                 else
                 {
-                    PlayAnim(3, "mismatched");
+                    PlayAnim("mismatched");
                 }
                 break;
 
             case 4:
-                if (IF_Q5[0].text.ToLower().Equals("e") && IF_Q5[1].text.ToLower().Equals("d"))
+                if (IF_Q1[0].text.ToLower().Equals("e") && IF_Q1[1].text.ToLower().Equals("d"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[4]);
-                    PlayAnim(4, "matched");
-                    I_AnswerCount = 0;
+                    PlayAnim("matched");
                 }
                 else
                 {
-                    PlayAnim(4, "mismatched");
+                    PlayAnim("mismatched");
                 }
                 break;
 
@@ -229,26 +220,27 @@ public class PictureToWord : MonoBehaviour
         }
 
 
-        void PlayAnim(int index, string param)
+        void PlayAnim(string param)
         {
-            TA_Questions[index].GetChild(0).GetComponent<Animator>().SetTrigger(param);
+            instantiatedGameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger(param);
         }
 
     }
 
 
-
-    public void IncrementAnswerCount()
+    public void BUT_Next()
     {
-        I_AnswerCount++;
-
-        if (I_AnswerCount == 2)
-        {
-            CheckInputFields();
-        }
-
-        Debug.Log("answer count incremented - " + I_AnswerCount);
+        I_CurrentIndex++;
+        ShowQuestion();
     }
+
+
+    public void BUT_Back()
+    {
+        I_CurrentIndex--;
+        ShowQuestion();
+    }
+
 
 
 
@@ -274,137 +266,52 @@ public class PictureToWord : MonoBehaviour
 
     private void ShowQuestion()
     {
+        IF_1Answered = false;
+        IF_2Answered = false;
+
         G_TransparentScreen.SetActive(false);
 
-        I_CurrentIndex++;
+        if (I_CurrentIndex > 0) Destroy(T_QParent.GetChild(0).gameObject);
 
-        if (I_CurrentIndex > 0) TA_Questions[I_CurrentIndex - 1].GetComponent<Animator>().SetTrigger("out");
+        instantiatedGameObject = Instantiate(GA_Questions[I_CurrentIndex], T_QParent);
+        instantiatedGameObject.GetComponent<Animator>().SetTrigger("in");
 
-        TA_Questions[I_CurrentIndex].GetComponent<Animator>().SetTrigger("in");
-        // TA_Questions[I_CurrentIndex].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
-        // Invoke(nameof(DisableAnim), 0.65f);
+        IF_Q1[0] = instantiatedGameObject.transform.GetChild(7).GetComponent<TMP_InputField>();
+        IF_Q1[1] = instantiatedGameObject.transform.GetChild(8).GetComponent<TMP_InputField>();
 
-
-
-        void DisableAnim()
-        {
-            TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = false;
-        }
+        IF_Q1[0].onValueChanged.AddListener(delegate { InputField1Answered(); });
+        IF_Q1[1].onValueChanged.AddListener(delegate { InputField2Answered(); });
     }
 
 
-    private void CheckInputFields()
+    private void InputField1Answered()
     {
-
-        if (I_CurrentIndex == 0)
-        {
-            if (IF_Q1[0].text.ToLower().Equals("s") && IF_Q1[1].text.ToLower().Equals("n"))
-            {
-                PlayAnim(0, "matched");
-                I_AnswerCount = 0;
-                G_TransparentScreen.SetActive(true);
-                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
-                Invoke(nameof(ShowQuestion), 2.5f);
-                return;
-            }
-            else
-            {
-                PlayAnim(0, "mismatched");
-                I_AnswerCount = 1;
-            }
-        }
-        else if (I_CurrentIndex == 1)
-        {
-            if (IF_Q2[0].text.ToLower().Equals("i") && IF_Q2[1].text.ToLower().Equals("g"))
-            {
-                PlayAnim(0, "matched");
-                I_AnswerCount = 0;
-                G_TransparentScreen.SetActive(true);
-                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
-                Invoke(nameof(ShowQuestion), 2.5f);
-                return;
-            }
-            else
-            {
-                PlayAnim(0, "mismatched");
-                I_AnswerCount = 1;
-            }
-        }
-        else if (I_CurrentIndex == 2)
-        {
-            if (IF_Q2[0].text.ToLower().Equals("o") && IF_Q2[1].text.ToLower().Equals("y"))
-            {
-                PlayAnim(0, "matched");
-                I_AnswerCount = 0;
-                G_TransparentScreen.SetActive(true);
-                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
-                Invoke(nameof(ShowQuestion), 2.5f);
-                return;
-            }
-            else
-            {
-                PlayAnim(0, "mismatched");
-                I_AnswerCount = 1;
-            }
-        }
-        else if (I_CurrentIndex == 3)
-        {
-            if (IF_Q3[0].text.ToLower().Equals("i") && IF_Q3[1].text.ToLower().Equals("r"))
-            {
-                PlayAnim(0, "matched");
-                I_AnswerCount = 0;
-                G_TransparentScreen.SetActive(true);
-                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
-                Invoke(nameof(ShowQuestion), 2.5f);
-                return;
-            }
-            else
-            {
-                PlayAnim(0, "mismatched");
-                I_AnswerCount = 1;
-            }
-        }
-        else if (I_CurrentIndex == 4)
-        {
-            if (IF_Q4[0].text.ToLower().Equals("b") && IF_Q4[1].text.ToLower().Equals("e"))
-            {
-                PlayAnim(0, "matched");
-                I_AnswerCount = 0;
-                G_TransparentScreen.SetActive(true);
-                TA_Questions[I_CurrentIndex].GetComponent<Animator>().enabled = true;
-                Invoke(nameof(ShowQuestion), 2.5f);
-                return;
-            }
-            else
-            {
-                PlayAnim(0, "mismatched");
-                I_AnswerCount = 1;
-            }
-        }
-
-        //------
-
-        if (IF_Q1[1].text.ToLower().Equals("n"))
-        {
-            TA_Questions[0].GetChild(0).GetComponent<Animator>().SetTrigger("matched");
-        }
+        if (IF_Q1[0].text.Length > 0)
+            IF_1Answered = true;
         else
-        {
-            TA_Questions[0].GetChild(0).GetComponent<Animator>().SetTrigger("mismatched");
-        }
+            IF_1Answered = false;
+
+        EnableDisableCheckButton();
+    }
 
 
-        void PlayAnim(int index, string param)
-        {
-            TA_Questions[index].GetChild(0).GetComponent<Animator>().SetTrigger(param);
-        }
+    private void InputField2Answered()
+    {
+        if (IF_Q1[1].text.Length > 0)
+            IF_2Answered = true;
+        else
+            IF_2Answered = false;
+
+        EnableDisableCheckButton();
+    }
 
 
-        if (IF_Q1[0].text.ToLower().Equals("s") && IF_Q1[1].text.ToLower().Equals("n"))
-        {
-            TA_Questions[0].GetChild(TA_Questions[0].childCount - 1).gameObject.SetActive(true);
-        }
-
+    private void EnableDisableCheckButton()
+    {
+        if (IF_1Answered && IF_2Answered)
+            G_CheckButton.gameObject.SetActive(true);
+        else
+            G_CheckButton.gameObject.SetActive(false);
     }
 
 
@@ -442,7 +349,7 @@ public class PictureToWord : MonoBehaviour
             I_AnswerCount++;
 
             //*checking if all the answers are correct
-            if (I_AnswerCount == TA_Questions.Length)
+            if (I_AnswerCount == GA_Questions.Length)
             {
                 G_ProceedButton1.SetActive(true);
                 AudioManager.Instance.PlaySFX(AC_Proceed);
