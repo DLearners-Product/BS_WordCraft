@@ -85,11 +85,7 @@ public class InASentence : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(AC_Wrong);
 
-
-
-
     }
-
 
 
 
@@ -99,4 +95,10 @@ public class InASentence : MonoBehaviour
     }
 
 
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
+    
 }

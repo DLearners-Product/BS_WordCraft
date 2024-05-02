@@ -201,4 +201,12 @@ public class WeAreWords : MonoBehaviour
     }
 
 
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
+
+
+
 }

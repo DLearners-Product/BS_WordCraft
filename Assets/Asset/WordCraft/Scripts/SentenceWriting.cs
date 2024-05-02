@@ -8,6 +8,10 @@ using TMPro;
 public class SentenceWriting : MonoBehaviour
 {
 
+    [SerializeField] private AudioClip[] ACA_Sentences;
+
+    [Space(10)]
+
     [SerializeField] private Sprite[] SPRA_Images;
 
     [Space(10)]
@@ -17,6 +21,12 @@ public class SentenceWriting : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private TextMeshProUGUI TXT_Sentence;
+
+    [Space(10)]
+
+    [SerializeField] private MouseClickAudio REF_MouseClickAudio;
+
+
 
     private string[] STRA_Sentences = new string[] {
     "We ate a <color=orange><b>big</color><b> cake.",
@@ -31,6 +41,8 @@ public class SentenceWriting : MonoBehaviour
     void Start()
     {
         I_CurrentIndex = 0;
+        AudioManager.Instance.PlayVoice(ACA_Sentences[I_CurrentIndex]);
+        REF_MouseClickAudio.clip = ACA_Sentences[I_CurrentIndex];
     }
 
 
@@ -53,26 +65,23 @@ public class SentenceWriting : MonoBehaviour
         I_CurrentIndex--;
 
         ShowCurrent();
-
     }
-
 
 
     public void ShowCurrent()
     {
+        IMG_Placeholder.GetComponent<Animator>().SetTrigger("active");
         IMG_Placeholder.sprite = SPRA_Images[I_CurrentIndex];
         TXT_Sentence.text = STRA_Sentences[I_CurrentIndex];
+        AudioManager.Instance.PlayVoice(ACA_Sentences[I_CurrentIndex]);
+        REF_MouseClickAudio.clip = ACA_Sentences[I_CurrentIndex];
     }
 
 
-
-
-
-
-
-
-
-
-
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 }

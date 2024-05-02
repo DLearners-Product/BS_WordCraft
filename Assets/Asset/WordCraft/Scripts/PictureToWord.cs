@@ -28,10 +28,6 @@ public class PictureToWord : MonoBehaviour
 
     [Header("INPUTFIELD---------------------------------------------------------")]
     [SerializeField] private TMP_InputField[] IF_Q1;
-    /*     [SerializeField] private TMP_InputField[] IF_Q2;
-        [SerializeField] private TMP_InputField[] IF_Q3;
-        [SerializeField] private TMP_InputField[] IF_Q4;
-        [SerializeField] private TMP_InputField[] IF_Q5; */
 
     [Space(10)]
 
@@ -180,7 +176,7 @@ public class PictureToWord : MonoBehaviour
                 break;
 
             case 2:
-                if (IF_Q1[0].text.ToLower().Equals("o") && IF_Q1[1].text.ToLower().Equals("y"))
+                if (IF_Q1[0].text.ToLower().Equals("b") && IF_Q1[1].text.ToLower().Equals("o"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[2]);
                     PlayAnim("matched");
@@ -204,7 +200,7 @@ public class PictureToWord : MonoBehaviour
                 break;
 
             case 4:
-                if (IF_Q1[0].text.ToLower().Equals("e") && IF_Q1[1].text.ToLower().Equals("d"))
+                if (IF_Q1[0].text.ToLower().Equals("r") && IF_Q1[1].text.ToLower().Equals("e"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[4]);
                     PlayAnim("matched");
@@ -230,13 +226,24 @@ public class PictureToWord : MonoBehaviour
 
     public void BUT_Next()
     {
+        foreach (Transform child in T_QParent) Destroy(child.gameObject);
+
         I_CurrentIndex++;
+
+        if (I_CurrentIndex == GA_Questions.Length)
+        {
+            AudioManager.Instance.PlaySFX(AC_Proceed);
+            return;
+        }
+
         ShowQuestion();
     }
 
 
     public void BUT_Back()
     {
+        foreach (Transform child in T_QParent) Destroy(child.gameObject);
+
         I_CurrentIndex--;
         ShowQuestion();
     }
@@ -270,8 +277,6 @@ public class PictureToWord : MonoBehaviour
         IF_2Answered = false;
 
         G_TransparentScreen.SetActive(false);
-
-        if (I_CurrentIndex > 0) Destroy(T_QParent.GetChild(0).gameObject);
 
         instantiatedGameObject = Instantiate(GA_Questions[I_CurrentIndex], T_QParent);
         instantiatedGameObject.GetComponent<Animator>().SetTrigger("in");
@@ -405,6 +410,10 @@ public class PictureToWord : MonoBehaviour
     #endregion
 
 
-
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 }

@@ -67,6 +67,7 @@ public class PictureSentence : MonoBehaviour
 
     private void ShowImageAndText()
     {
+        IMG_Placeholder.GetComponent<Animator>().SetTrigger("active");
         IMG_Placeholder.sprite = SPRA_Images[I_CurrentIndex];
         TXT_Word.text = words[I_CurrentIndex];
     }
@@ -112,12 +113,10 @@ public class PictureSentence : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 }

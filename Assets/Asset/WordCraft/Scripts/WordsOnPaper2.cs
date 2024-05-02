@@ -49,5 +49,10 @@ public class WordsOnPaper2 : MonoBehaviour
     }
 
 
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 }

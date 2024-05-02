@@ -13,6 +13,9 @@ public class WordSentence : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI TXT_Placeholder;
 
+    [Space(10)]
+
+    [SerializeField] private MouseClickAudio REF_MouseClickAudio;
 
     private string[] STRA_Words = new string[] {
     "and",
@@ -30,9 +33,9 @@ public class WordSentence : MonoBehaviour
     void Start()
     {
         I_CurrentIndex = 0;
+        PlayCurrentAudio();
+        SetCurrentAudioToText();
     }
-
-
 
 
     public void BUT_Next()
@@ -45,6 +48,8 @@ public class WordSentence : MonoBehaviour
         }
 
         TXT_Placeholder.text = STRA_Words[I_CurrentIndex];
+        PlayCurrentAudio();
+        SetCurrentAudioToText();
     }
 
 
@@ -52,16 +57,27 @@ public class WordSentence : MonoBehaviour
     {
         I_CurrentIndex--;
         TXT_Placeholder.text = STRA_Words[I_CurrentIndex];
+        PlayCurrentAudio();
+        SetCurrentAudioToText();
     }
 
 
-
-    public void BUT_Word()
+    private void PlayCurrentAudio()
     {
         AudioManager.Instance.PlayVoice(ACA_Words[I_CurrentIndex]);
     }
 
 
+    private void SetCurrentAudioToText()
+    {
+        REF_MouseClickAudio.clip = ACA_Words[I_CurrentIndex];
+    }
 
+
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 }

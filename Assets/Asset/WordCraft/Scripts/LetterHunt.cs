@@ -111,7 +111,7 @@ public class LetterHunt : MonoBehaviour
 
         if (I_CurrentIndex >= STRA_Words.Length)
         {
-            Invoke(nameof(ShowActivityCompleted), 2.5f);
+            Invoke(nameof(ShowActivityCompleted), 2f);
         }
 
         TXT_FormedWord.text = "";
@@ -149,6 +149,13 @@ public class LetterHunt : MonoBehaviour
         G_ActivityCompleted.SetActive(true);
     }
 
+
+
+    void OnDisable()
+    {
+        AudioManager.Instance.StopVoice();
+        AudioManager.Instance.StopSFX();
+    }
 
 
 }

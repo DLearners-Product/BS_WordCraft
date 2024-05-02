@@ -209,9 +209,18 @@ public class AudioManager : GenericSingleton<AudioManager>
 
     public void StopVoice()
     {
-        AS_Voice.Stop();    
+        AS_Voice.Stop();
     }
 
+    public void StopSFX()
+    {
+        AS_SFX.Stop();
+    }
+
+    public void StopMusic()
+    {
+        AS_Music.Stop();
+    }
 
 
 
