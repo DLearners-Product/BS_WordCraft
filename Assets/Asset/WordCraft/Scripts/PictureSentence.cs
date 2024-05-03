@@ -9,6 +9,7 @@ public class PictureSentence : MonoBehaviour
 {
 
 
+    [SerializeField] private AudioClip AC_ExampleVO;
     [SerializeField] private AudioClip[] ACA_Words;
     [SerializeField] private AudioClip[] ACA_ImageWords;
 
@@ -40,6 +41,7 @@ public class PictureSentence : MonoBehaviour
     private string[] overlayWords = new string[] { "The", " big ball rolls ", "and", " bounces well." };
 
     private int I_CurrentIndex;
+    private bool isCoroutineRunning = false;
 
 
     void Start()
@@ -87,6 +89,8 @@ public class PictureSentence : MonoBehaviour
 
     public void BUT_Skip()
     {
+        AudioManager.Instance.StopVoice();
+        isCoroutineRunning = false; // Set the flag to stop the coroutine
         G_Overlay.SetActive(false);
         G_Activity.SetActive(true);
     }
@@ -94,7 +98,10 @@ public class PictureSentence : MonoBehaviour
 
     IEnumerator IENUM_Sentence()
     {
-        for (int i = 0; i < TXTA_Sentences.Length; i++)
+        isCoroutineRunning = true; // Set the flag to indicate coroutine is running
+        AudioManager.Instance.PlayVoice(AC_ExampleVO);
+
+        for (int i = 0; i < TXTA_Sentences.Length && isCoroutineRunning; i++)
         {
             string fullText = overlayWords[i];
             TXTA_Sentences[i].text = "";
@@ -102,14 +109,15 @@ public class PictureSentence : MonoBehaviour
             foreach (char letter in fullText)
             {
                 TXTA_Sentences[i].text += letter;
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.085f);
+                if (!isCoroutineRunning) break; // Check flag to exit the loop
             }
         }
 
         yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < TXTA_Sentences.Length; i++) { TXTA_Sentences[i].text = ""; }
-        StartCoroutine(IENUM_Sentence());
+        if (isCoroutineRunning) StartCoroutine(IENUM_Sentence()); // Restart coroutine if flag is still true
     }
 
 

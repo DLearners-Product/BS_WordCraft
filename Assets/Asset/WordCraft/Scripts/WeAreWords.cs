@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class WeAreWords : MonoBehaviour
 {
@@ -76,12 +78,20 @@ public class WeAreWords : MonoBehaviour
             yield return new WaitForSeconds(ACA_Examples1[1].length + 0.5f);
 
             //are words
-            //jgly is not a word
-            // AudioManager.Instance.PlayVoice(ACA_Examples1[2]);
+            AudioManager.Instance.PlayVoice(ACA_Examples1[2]);
+            yield return new WaitForSeconds(ACA_Examples1[2].length + 0.5f);
+
+            //jgly
             GA_Examples1[2].SetActive(true);
+            AudioManager.Instance.PlayVoice(ACA_Examples1[3]);
+            yield return new WaitForSeconds(ACA_Examples1[3].length + 0.5f);
 
-            // yield return new WaitForSeconds(ACA_Examples1[1].length + 0.5f);
+            //is not a word
+            AudioManager.Instance.PlayVoice(ACA_Examples1[4]);
+            yield return new WaitForSeconds(ACA_Examples1[4].length + 0.5f);
 
+
+            GA_Examples1[2].SetActive(true);
             yield return new WaitForSeconds(2f);
 
             //disabling
@@ -112,10 +122,22 @@ public class WeAreWords : MonoBehaviour
         else if (flowIndex == 1)
         {
             GA_Examples2[0].SetActive(false);
+            GA_Examples2[1].SetActive(true);
 
             //write i
             AudioManager.Instance.PlayVoice(ACA_Examples2[1]);
-            GA_Examples2[1].SetActive(true);
+
+            yield return new WaitForSeconds(ACA_Examples2[1].length + 1f);
+
+            //I am smart
+            AudioManager.Instance.PlayVoice(ACA_Examples2[2]);
+
+            yield return new WaitForSeconds(ACA_Examples2[2].length + 1f);
+
+
+
+
+
             G_NextButton.SetActive(true);
         }
         else if (flowIndex == 2)
@@ -152,10 +174,20 @@ public class WeAreWords : MonoBehaviour
     }
 
 
-    public void BUT_Next() { StartCoroutine(IENUM_Next("next")); }
+    public void BUT_Next()
+    {
+        AudioManager.Instance.StopVoice();
+        StopAllCoroutines();
+        StartCoroutine(IENUM_Next("next"));
+    }
 
 
-    public void BUT_Back() { StartCoroutine(IENUM_Next("back")); }
+    public void BUT_Back()
+    {
+        AudioManager.Instance.StopVoice();
+        StopAllCoroutines();
+        StartCoroutine(IENUM_Next("back"));
+    }
 
 
     IEnumerator IENUM_Next(string dir)
