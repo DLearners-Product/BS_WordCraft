@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -29,8 +30,23 @@ public class InASentence : MonoBehaviour
     [SerializeField] private GameObject G_ActivityCompleted;
 
 
-
     private int I_CurrentIndex;
+
+
+    private List<string> qList = new List<string>();
+
+
+    #region QA
+
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+
+    #endregion
 
 
 
@@ -38,6 +54,16 @@ public class InASentence : MonoBehaviour
     {
         I_CurrentIndex = -1;
         BUT_Next();
+
+        #region DataSetter
+        //Main_Blended.OBJ_main_blended.levelno = 3;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        // GetData(qIndex);
+        GetAdditionalData();
+        AssignData();
+        #endregion
+
     }
 
 
@@ -75,8 +101,17 @@ public class InASentence : MonoBehaviour
     }
 
 
-    public void BUT_CorrectAnswer()
+    public void BUT_CorrectAnswer(string ans)
     {
+        //*correct answer
+        ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ans));
+
+        if (qIndex < GA_Questions.Length - 1)
+            qIndex++;
+
+        GetData(qIndex);
+
+
         //audio feedback
         AudioManager.Instance.PlaySFX(AC_Correct);
 
@@ -89,10 +124,12 @@ public class InASentence : MonoBehaviour
     }
 
 
-    public void BUT_WrongAnswer()
+    public void BUT_WrongAnswer(string ans)
     {
-        AudioManager.Instance.PlaySFX(AC_Wrong);
+        //!wrong answer
+        ScoreManager.instance.WrongAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ans));
 
+        AudioManager.Instance.PlaySFX(AC_Wrong);
     }
 
 
@@ -108,5 +145,63 @@ public class InASentence : MonoBehaviour
         AudioManager.Instance.StopVoice();
         AudioManager.Instance.StopSFX();
     }
+
+
+    #region QA
+
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].text == selectedOption)
+            {
+                return options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    bool CheckOptionIsAns(Component option)
+    {
+        for (int i = 0; i < answers.Length; i++)
+        {
+            if (option.text == answers[i].text) { return true; }
+        }
+        return false;
+    }
+
+    void GetData(int questionIndex)
+    {
+        Debug.Log(">>>>>" + questionIndex);
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        //if(question != null){
+        options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+        // }
+    }
+
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+
+    void AssignData()
+    {
+        // Custom code
+        for (int i = 0; i < optionsGO.Length; i++)
+        {
+            optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+            optionsGO[i].tag = "Untagged";
+            Debug.Log(optionsGO[i].name, optionsGO[i]);
+            if (CheckOptionIsAns(options[i]))
+            {
+                optionsGO[i].tag = "answer";
+            }
+        }
+        // answerCount.text = "/"+answers.Length;
+    }
+
+    #endregion
+
 
 }

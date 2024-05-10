@@ -57,12 +57,37 @@ public class LetterHunt : MonoBehaviour
     private int I_CurrentIndex;
 
 
+    #region QA
+
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+
+    #endregion
+
+
+
 
     void Start()
     {
+
         I_CurrentIndex = -1;
         letterImageIndexList = new List<Image>();
         GotoNextWord();
+
+        #region DataSetter
+        //Main_Blended.OBJ_main_blended.levelno = 3;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        // GetData(qIndex);
+        GetAdditionalData();
+        AssignData();
+        #endregion
+
     }
 
 
@@ -90,6 +115,16 @@ public class LetterHunt : MonoBehaviour
         {
             if (TXT_FormedWord.text.ToString().Equals(STRA_Words[I_CurrentIndex]))
             {
+                //*correct answer
+                // ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(TXT_FormedWord.text.ToString()));
+                ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answer: TXT_FormedWord.text);
+
+                if (qIndex < ACA_Words.Length - 1)
+                    qIndex++;
+
+                GetData(qIndex);
+
+
                 for (int i = 0; i < letterImageIndexList.Count; i++) { letterImageIndexList[i].color = CLR_Correct; }
 
                 PS_CorrectEffect.Play();
@@ -99,6 +134,9 @@ public class LetterHunt : MonoBehaviour
             }
             else
             {
+                //!wrong answer
+                ScoreManager.instance.WrongAnswer(qIndex, questionID: question.id, answer: TXT_FormedWord.text);
+
                 for (int i = 0; i < letterImageIndexList.Count; i++) { letterImageIndexList[i].color = CLR_Wrong; }
 
                 AudioManager.Instance.PlaySFX(AC_Wrong);
@@ -167,6 +205,64 @@ public class LetterHunt : MonoBehaviour
         AudioManager.Instance.StopVoice();
         AudioManager.Instance.StopSFX();
     }
+
+
+
+    #region QA
+
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].text == selectedOption)
+            {
+                return options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    bool CheckOptionIsAns(Component option)
+    {
+        for (int i = 0; i < answers.Length; i++)
+        {
+            if (option.text == answers[i].text) { return true; }
+        }
+        return false;
+    }
+
+    void GetData(int questionIndex)
+    {
+        Debug.Log(">>>>>" + questionIndex);
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        //if(question != null){
+        options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+        // }
+    }
+
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+
+    void AssignData()
+    {
+        // Custom code
+        for (int i = 0; i < optionsGO.Length; i++)
+        {
+            optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+            optionsGO[i].tag = "Untagged";
+            Debug.Log(optionsGO[i].name, optionsGO[i]);
+            if (CheckOptionIsAns(options[i]))
+            {
+                optionsGO[i].tag = "answer";
+            }
+        }
+        // answerCount.text = "/"+answers.Length;
+    }
+
+    #endregion
 
 
 }

@@ -90,6 +90,20 @@ public class PictureToWord : MonoBehaviour
     #endregion
 
 
+    #region QA
+
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+
+    #endregion
+
+
+
     void Start()
     {
         I_ImageIndex = -1;
@@ -100,6 +114,16 @@ public class PictureToWord : MonoBehaviour
         I_AnswerCount = 0;
         IF_1Answered = false;
         IF_1Answered = false;
+
+        #region DataSetter
+        //Main_Blended.OBJ_main_blended.levelno = 3;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        // GetData(qIndex);
+        GetAdditionalData();
+        AssignData();
+        #endregion
+
     }
 
 
@@ -154,6 +178,7 @@ public class PictureToWord : MonoBehaviour
     }
 
 
+    //part 2 answer check
     public void BUT_Check()
     {
         switch (I_CurrentIndex)
@@ -339,12 +364,21 @@ public class PictureToWord : MonoBehaviour
     #region coroutines
 
 
+    //part 1 answer check
     IEnumerator IENUM_MatchAnswerCheck()
     {
-        //*correct answer
         if (I_ImageIndex == I_WordIndex)
         {
-            // GA_ImageDots[I_ImageIndex].SetActive(true);
+            //*correct answer
+            ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ACA_Words[I_WordIndex].name));
+
+            if (qIndex < GA_Images.Length - 1)
+                qIndex++;
+
+            GetData(qIndex);
+
+
+
             StartCoroutine(IENUM_FillImage(IMGA_Lines[I_ImageIndex]));
 
             yield return new WaitForSeconds(1f);
@@ -371,9 +405,11 @@ public class PictureToWord : MonoBehaviour
             }
 
         }
-        //!wrong answer
         else
         {
+            //!wrong answer
+            ScoreManager.instance.WrongAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ACA_Words[I_WordIndex].name));
+
             AudioManager.Instance.PlaySFX(AC_Wrong);
             GA_Images[I_ImageIndex].GetComponent<Animator>().SetTrigger("mismatched");
             GA_Words[I_WordIndex].GetComponent<Animator>().SetTrigger("mismatched");
@@ -425,5 +461,62 @@ public class PictureToWord : MonoBehaviour
         AudioManager.Instance.StopVoice();
         AudioManager.Instance.StopSFX();
     }
+
+    #region QA
+
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].text == selectedOption)
+            {
+                return options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    bool CheckOptionIsAns(Component option)
+    {
+        for (int i = 0; i < answers.Length; i++)
+        {
+            if (option.text == answers[i].text) { return true; }
+        }
+        return false;
+    }
+
+    void GetData(int questionIndex)
+    {
+        Debug.Log(">>>>>" + questionIndex);
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        //if(question != null){
+        options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+        // }
+    }
+
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+
+    void AssignData()
+    {
+        // Custom code
+        for (int i = 0; i < optionsGO.Length; i++)
+        {
+            optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+            optionsGO[i].tag = "Untagged";
+            Debug.Log(optionsGO[i].name, optionsGO[i]);
+            if (CheckOptionIsAns(options[i]))
+            {
+                optionsGO[i].tag = "answer";
+            }
+        }
+        // answerCount.text = "/"+answers.Length;
+    }
+
+    #endregion
+
 
 }
