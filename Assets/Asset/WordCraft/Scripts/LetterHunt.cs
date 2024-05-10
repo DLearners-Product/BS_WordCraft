@@ -19,7 +19,14 @@ public class LetterHunt : MonoBehaviour
 
     [Space(10)]
 
+    [Header("ANIMATOR---------------------------------------------------------")]
     [SerializeField] private Animator ANIM_SpeakerEffect;
+    [SerializeField] private Animator ANIM_Counter;
+
+    [Space(10)]
+
+    [Header("TEXTMESHPRO---------------------------------------------------------")]
+    [SerializeField] private TextMeshProUGUI TXT_Counter;
 
     [Space(10)]
 
@@ -112,7 +119,11 @@ public class LetterHunt : MonoBehaviour
         if (I_CurrentIndex >= STRA_Words.Length)
         {
             Invoke(nameof(ShowActivityCompleted), 2f);
+            return;
         }
+
+        ANIM_Counter.SetTrigger("active");
+        TXT_Counter.text = (I_CurrentIndex + 1).ToString();
 
         TXT_FormedWord.text = "";
         PlayWordSound();

@@ -22,9 +22,17 @@ public class PictureToWord : MonoBehaviour
     [Header("IMAGE---------------------------------------------------------")]
     [SerializeField] private Image[] IMGA_Lines;
 
+    [Space(10)]
+
+    [Header("ANIMATOR---------------------------------------------------------")]
+    [SerializeField] private Animator ANIM_Counter;
 
     [Space(10)]
 
+    [Header("TEXTMESHPRO---------------------------------------------------------")]
+    [SerializeField] private TextMeshProUGUI TXT_Counter;
+
+    [Space(10)]
 
     [Header("INPUTFIELD---------------------------------------------------------")]
     [SerializeField] private TMP_InputField[] IF_Q1;
@@ -109,7 +117,7 @@ public class PictureToWord : MonoBehaviour
 
         if (I_WordIndex != -1)
         {
-            StartCoroutine(IENUM_AnswerCheck());
+            StartCoroutine(IENUM_MatchAnswerCheck());
         }
     }
 
@@ -122,7 +130,7 @@ public class PictureToWord : MonoBehaviour
 
         if (I_ImageIndex != -1)
         {
-            StartCoroutine(IENUM_AnswerCheck());
+            StartCoroutine(IENUM_MatchAnswerCheck());
         }
     }
 
@@ -331,7 +339,7 @@ public class PictureToWord : MonoBehaviour
     #region coroutines
 
 
-    IEnumerator IENUM_AnswerCheck()
+    IEnumerator IENUM_MatchAnswerCheck()
     {
         //*correct answer
         if (I_ImageIndex == I_WordIndex)
@@ -342,7 +350,9 @@ public class PictureToWord : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             AudioManager.Instance.PlayVoice(ACA_Words[I_WordIndex]);
-            // GA_WordDots[I_WordIndex].SetActive(true);
+            ANIM_Counter.SetTrigger("active");
+            TXT_Counter.text = (I_AnswerCount + 1).ToString();
+
             GA_WordDots[I_WordIndex].GetComponentInChildren<ParticleSystem>().Play();
             GA_Images[I_ImageIndex].GetComponent<Animator>().SetTrigger("matched");
             GA_Words[I_WordIndex].GetComponent<Animator>().SetTrigger("matched");

@@ -20,6 +20,10 @@ public class SentenceWriting : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private GameObject G_BallRollingAway;
+
+    [Space(10)]
+
     [SerializeField] private TextMeshProUGUI TXT_Sentence;
 
     [Space(10)]
@@ -49,9 +53,10 @@ public class SentenceWriting : MonoBehaviour
 
     public void BUT_Next()
     {
+        AudioManager.Instance.StopVoice();
         I_CurrentIndex++;
 
-        if (I_CurrentIndex >= STRA_Sentences.Length)
+        if (I_CurrentIndex >= SPRA_Images.Length)
         {
             return;
         }
@@ -62,6 +67,7 @@ public class SentenceWriting : MonoBehaviour
 
     public void BUT_Back()
     {
+        AudioManager.Instance.StopVoice();
         I_CurrentIndex--;
 
         ShowCurrent();
@@ -70,7 +76,17 @@ public class SentenceWriting : MonoBehaviour
 
     public void ShowCurrent()
     {
-        IMG_Placeholder.GetComponent<Animator>().SetTrigger("active");
+        if (I_CurrentIndex == SPRA_Images.Length - 1)
+        {
+            G_BallRollingAway.SetActive(true);
+            IMG_Placeholder.GetComponent<Animator>().SetTrigger("ball");
+        }
+        else
+        {
+            G_BallRollingAway.SetActive(false);
+            IMG_Placeholder.GetComponent<Animator>().SetTrigger("active");
+        }
+
         IMG_Placeholder.sprite = SPRA_Images[I_CurrentIndex];
         TXT_Sentence.text = STRA_Sentences[I_CurrentIndex];
         AudioManager.Instance.PlayVoice(ACA_Sentences[I_CurrentIndex]);

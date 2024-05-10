@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class InASentence : MonoBehaviour
 {
@@ -12,6 +14,14 @@ public class InASentence : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private Animator ANIM_Counter;
+
+    [Space(10)]
+
+    [SerializeField] private TextMeshProUGUI TXT_Counter;
+
+    [Space(10)]
+
     [SerializeField] private GameObject[] GA_Questions;
     [SerializeField] private GameObject[] GA_Options;
     [SerializeField] private GameObject[] GA_Answers;
@@ -20,9 +30,7 @@ public class InASentence : MonoBehaviour
 
 
 
-
     private int I_CurrentIndex;
-
 
 
 
@@ -60,6 +68,8 @@ public class InASentence : MonoBehaviour
             yield break;
         }
 
+        TXT_Counter.text = (I_CurrentIndex + 1).ToString();
+        ANIM_Counter.SetTrigger("active");
         GA_Options[I_CurrentIndex].SetActive(true);
         GA_Questions[I_CurrentIndex].SetActive(true);
     }
@@ -76,8 +86,6 @@ public class InASentence : MonoBehaviour
 
         //show next button
         G_Next.SetActive(true);
-
-
     }
 
 
@@ -100,5 +108,5 @@ public class InASentence : MonoBehaviour
         AudioManager.Instance.StopVoice();
         AudioManager.Instance.StopSFX();
     }
-    
+
 }
