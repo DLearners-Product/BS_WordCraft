@@ -172,7 +172,7 @@ public class PictureToWord : MonoBehaviour
                 break;
 
             case 1:
-                if (IF_Q1[0].text.ToLower().Equals("i") && IF_Q1[1].text.ToLower().Equals("g"))
+                if (IF_Q1[0].text.ToLower().Equals("r") && IF_Q1[1].text.ToLower().Equals("e"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[1]);
                     PlayAnim("matched");
@@ -208,7 +208,7 @@ public class PictureToWord : MonoBehaviour
                 break;
 
             case 4:
-                if (IF_Q1[0].text.ToLower().Equals("r") && IF_Q1[1].text.ToLower().Equals("e"))
+                if (IF_Q1[0].text.ToLower().Equals("i") && IF_Q1[1].text.ToLower().Equals("g"))
                 {
                     AudioManager.Instance.PlayVoice(ACA_Words[4]);
                     PlayAnim("matched");
