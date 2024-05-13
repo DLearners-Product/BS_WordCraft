@@ -119,7 +119,7 @@ public class PictureToWord : MonoBehaviour
         //Main_Blended.OBJ_main_blended.levelno = 3;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
-        // GetData(qIndex);
+        GetData(qIndex);
         GetAdditionalData();
         AssignData();
         #endregion
@@ -138,6 +138,10 @@ public class PictureToWord : MonoBehaviour
         GA_Images[index].GetComponent<Animator>().SetTrigger("clicked");
         I_ImageIndex = index;
         G_WordTransparentScreen.SetActive(false);
+
+        //get data for current clicked image question
+        if (qIndex < GA_Images.Length)
+            GetData(I_ImageIndex);
 
         if (I_WordIndex != -1)
         {
@@ -367,16 +371,14 @@ public class PictureToWord : MonoBehaviour
     //part 1 answer check
     IEnumerator IENUM_MatchAnswerCheck()
     {
+
         if (I_ImageIndex == I_WordIndex)
         {
             //*correct answer
-            ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ACA_Words[I_WordIndex].name));
+            ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(ACA_Words[I_ImageIndex].name));
 
             if (qIndex < GA_Images.Length - 1)
                 qIndex++;
-
-            GetData(qIndex);
-
 
 
             StartCoroutine(IENUM_FillImage(IMGA_Lines[I_ImageIndex]));
@@ -400,6 +402,7 @@ public class PictureToWord : MonoBehaviour
             //*checking if all the answers are correct
             if (I_AnswerCount == GA_Questions.Length)
             {
+                BlendedOperations.instance.NotifyActivityCompleted();
                 G_ProceedButton1.SetActive(true);
                 AudioManager.Instance.PlaySFX(AC_Proceed);
             }

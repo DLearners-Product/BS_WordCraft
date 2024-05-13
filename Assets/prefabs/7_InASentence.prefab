@@ -4944,13 +4944,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fly
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873189374793887
@@ -6156,13 +6156,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: It
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873189576122821
@@ -6355,13 +6355,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: run
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873189578045186
@@ -34754,13 +34754,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: not
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873190063003025}
@@ -58772,7 +58772,7 @@ RectTransform:
   - {fileID: 6514873191094986299}
   - {fileID: 6514873191449740853}
   m_Father: {fileID: 6514873190519291448}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -58926,13 +58926,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ran
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873189908398057
@@ -68844,13 +68844,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: run
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873189771992978}
@@ -74497,13 +74497,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: it
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190098092097
@@ -74772,13 +74772,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: I
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873189701909129}
@@ -79861,13 +79861,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Our
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190191077500
@@ -80343,13 +80343,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: the
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190246926267
@@ -80543,13 +80543,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: pot
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873189938643889}
@@ -85585,13 +85585,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: us
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190465764592
@@ -85800,8 +85800,8 @@ RectTransform:
   - {fileID: 6514873189791535710}
   - {fileID: 6514873190860564938}
   - {fileID: 6514873190353420981}
-  - {fileID: 6514873190897711183}
   - {fileID: 6514873189905437584}
+  - {fileID: 6514873190897711183}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85850,6 +85850,8 @@ MonoBehaviour:
   - {fileID: 6514873191146084484}
   G_Next: {fileID: 6514873190353420980}
   G_ActivityCompleted: {fileID: 6514873190897711182}
+  questionGO: {fileID: 0}
+  optionsGO: []
 --- !u!1 &6514873190524588032
 GameObject:
   m_ObjectHideFlags: 0
@@ -115323,13 +115325,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: boy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190746802085
@@ -115523,13 +115525,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: The
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873190621964969}
@@ -125044,13 +125046,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: bed
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873190784757386
@@ -125743,7 +125745,7 @@ RectTransform:
   - {fileID: 6514873189742052027}
   - {fileID: 6514873191425529422}
   m_Father: {fileID: 6514873190519291448}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -141877,13 +141879,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_CorrectAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: and
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6514873189824789494}
@@ -142221,13 +142223,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: pot
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873191289835960
@@ -147648,13 +147650,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6514873190519291449}
         m_MethodName: BUT_WrongAnswer
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: we
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6514873191334640713

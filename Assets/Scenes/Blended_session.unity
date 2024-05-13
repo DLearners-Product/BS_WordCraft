@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &338719422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3106,7 +3106,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 1
+    HAS_ACTIVITY: 0
     IS_MANUAL_ACTIVITY: 0
   - name: 9_SentenceWriting
     slideObject: {fileID: 1650350157}
@@ -3374,7 +3374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activityContents:
-  - slideNo: 4
+  - slideNo: 3
     activityName: LetterHunt
     hasSubquestion: 0
     questionType: 1
@@ -3765,7 +3765,7 @@ MonoBehaviour:
       additionalFields: []
     staticQAWithSQ:
       qaWithSubQuestion: []
-  - slideNo: 7
+  - slideNo: 6
     activityName: Picture to Word
     hasSubquestion: 0
     questionType: 1
@@ -3775,7 +3775,7 @@ MonoBehaviour:
       questions:
       - question:
           text: sun
-          id: 7001
+          id: 6001
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -3791,7 +3791,7 @@ MonoBehaviour:
           audio_url: 
       - question:
           text: red
-          id: 7002
+          id: 6002
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -3807,7 +3807,7 @@ MonoBehaviour:
           audio_url: 
       - question:
           text: boy
-          id: 7003
+          id: 6003
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -3823,7 +3823,7 @@ MonoBehaviour:
           audio_url: 
       - question:
           text: girl
-          id: 7004
+          id: 6004
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -3839,7 +3839,7 @@ MonoBehaviour:
           audio_url: 
       - question:
           text: big
-          id: 7005
+          id: 6005
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -3862,28 +3862,28 @@ MonoBehaviour:
         image_url: 
         audio_url: 
       - text: red
-        id: 1
-        _sprite: {fileID: 0}
-        texture2D: {fileID: 0}
-        audioClip: {fileID: 0}
-        image_url: 
-        audio_url: 
-      - text: boy
         id: 2
         _sprite: {fileID: 0}
         texture2D: {fileID: 0}
         audioClip: {fileID: 0}
         image_url: 
         audio_url: 
-      - text: girl
+      - text: boy
         id: 3
         _sprite: {fileID: 0}
         texture2D: {fileID: 0}
         audioClip: {fileID: 0}
         image_url: 
         audio_url: 
-      - text: big
+      - text: girl
         id: 4
+        _sprite: {fileID: 0}
+        texture2D: {fileID: 0}
+        audioClip: {fileID: 0}
+        image_url: 
+        audio_url: 
+      - text: big
+        id: 5
         _sprite: {fileID: 0}
         texture2D: {fileID: 0}
         audioClip: {fileID: 0}
@@ -3897,7 +3897,7 @@ MonoBehaviour:
       additionalFields: []
     staticQAWithSQ:
       qaWithSubQuestion: []
-  - slideNo: 8
+  - slideNo: 7
     activityName: In a sentence
     hasSubquestion: 0
     questionType: 2
@@ -4028,7 +4028,7 @@ MonoBehaviour:
       questions:
       - question:
           text: ___ like dogs.<br> ___ don't like dogs.
-          id: 8001
+          id: 7001
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4061,7 +4061,7 @@ MonoBehaviour:
           isAnswer: 0
       - question:
           text: I can ___.<br> I can ___ fast.
-          id: 2
+          id: 7002
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4094,7 +4094,7 @@ MonoBehaviour:
           isAnswer: 0
       - question:
           text: ___ sun is yellow.<br> ___ sun rises in the east.
-          id: 8003
+          id: 7003
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4127,7 +4127,7 @@ MonoBehaviour:
           isAnswer: 0
       - question:
           text: Fill water in the ___.<br> The ___ is empty.
-          id: 8004
+          id: 7004
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4161,7 +4161,7 @@ MonoBehaviour:
       - question:
           text: Pal ___ Pari love to climb trees.<br> Pal, Pari ___ Neetu love to
             climb trees.
-          id: 8005
+          id: 7005
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4194,7 +4194,7 @@ MonoBehaviour:
           isAnswer: 1
       - question:
           text: Do ___ write on the walls.<br> Do ___  throw paper.
-          id: 8006
+          id: 7006
           _sprite: {fileID: 0}
           texture2D: {fileID: 0}
           audioClip: {fileID: 0}
@@ -4476,7 +4476,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067067672}
-        m_MethodName: JS_CALL_SetQAActivity
+        m_MethodName: SetQAActivityDataID
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25243,126 +25243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 799545434}
     m_Modifications:
-    - target: {fileID: 6514873189374793874, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189374793874, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: fly
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189576122872, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189576122872, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: It
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189578045189, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189578045189, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: run
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189744479678, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189744479678, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: not
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189908398060, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189908398060, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ran
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189999158716, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873189999158716, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: run
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190098092100, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190098092100, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: it
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190124503443, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190124503443, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: I
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190191077503, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190191077503, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Our
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190246926270, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190246926270, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: the
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190309773174, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190309773174, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: pot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190465764595, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190465764595, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: us
-      objectReference: {fileID: 0}
     - target: {fileID: 6514873190519291399, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
         type: 3}
       propertyPath: m_Name
@@ -25472,66 +25352,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190746802136, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190746802136, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: boy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190770263155, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190770263155, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: The
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190784757389, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873190784757389, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: bed
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191202732285, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191202732285, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: and
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191289835963, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191289835963, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: pot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191334640716, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6514873191334640716, guid: 436d6e5880ecc2e45bbbb3e119f7bb53,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: we
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 436d6e5880ecc2e45bbbb3e119f7bb53, type: 3}
@@ -25780,26 +25600,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 799545434}
     m_Modifications:
-    - target: {fileID: 7109612755555756722, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: girl
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612755598539466, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: red
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612755921336671, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: big
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612756439704599, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: big
-      objectReference: {fileID: 0}
     - target: {fileID: 7109612756558222726, guid: 06419fa6df02ffe42ba44375b60f9baf,
         type: 3}
       propertyPath: m_Name
@@ -25909,36 +25709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612756716345263, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: boy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612757012200670, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: sun
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612757297287082, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: sun
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612757407274538, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: boy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612757518328153, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: red
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109612757587810296, guid: 06419fa6df02ffe42ba44375b60f9baf,
-        type: 3}
-      propertyPath: m_Name
-      value: girl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06419fa6df02ffe42ba44375b60f9baf, type: 3}

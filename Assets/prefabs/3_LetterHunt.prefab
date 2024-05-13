@@ -125341,6 +125341,8 @@ MonoBehaviour:
   G_ActivityCompleted: {fileID: 693808823593423465}
   TA_Letters: {fileID: 9154763065895723738}
   PS_CorrectEffect: {fileID: 9154763065434833264}
+  questionGO: {fileID: 0}
+  optionsGO: []
 --- !u!1 &9154763067086895463
 GameObject:
   m_ObjectHideFlags: 0

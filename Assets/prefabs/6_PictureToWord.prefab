@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 7109612755555756733}
   - component: {fileID: 7109612755555756732}
   m_Layer: 5
-  m_Name: Girl
+  m_Name: girl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 7109612755598539444}
   - component: {fileID: 7109612755598539446}
   m_Layer: 5
-  m_Name: Red
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5775,7 +5775,7 @@ GameObject:
   - component: {fileID: 7109612755921336666}
   - component: {fileID: 7109612755921336665}
   m_Layer: 5
-  m_Name: Big
+  m_Name: big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16218,7 +16218,7 @@ GameObject:
   - component: {fileID: 7109612756439704593}
   - component: {fileID: 7109612756439704595}
   m_Layer: 5
-  m_Name: Big
+  m_Name: big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16665,6 +16665,8 @@ MonoBehaviour:
   - {fileID: 8389824166095644304, guid: d4a289f480e38ba49b4d7fc7e65fd3f7, type: 3}
   - {fileID: 4599367172636012525, guid: ab0e69eb615173f47a919acfc2bd773f, type: 3}
   T_QParent: {fileID: 7109612757639606952}
+  questionGO: {fileID: 0}
+  optionsGO: []
 --- !u!1 &7109612756565651628
 GameObject:
   m_ObjectHideFlags: 0
@@ -22019,7 +22021,7 @@ GameObject:
   - component: {fileID: 7109612756716345257}
   - component: {fileID: 7109612756716345259}
   m_Layer: 5
-  m_Name: Boy
+  m_Name: boy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28348,7 +28350,7 @@ GameObject:
   - component: {fileID: 7109612757012200664}
   - component: {fileID: 7109612757012200666}
   m_Layer: 5
-  m_Name: Sun
+  m_Name: sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29402,7 +29404,7 @@ GameObject:
   - component: {fileID: 7109612757297287061}
   - component: {fileID: 7109612757297287060}
   m_Layer: 5
-  m_Name: Sun
+  m_Name: sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29965,7 +29967,7 @@ GameObject:
   - component: {fileID: 7109612757407274517}
   - component: {fileID: 7109612757407274516}
   m_Layer: 5
-  m_Name: Boy
+  m_Name: boy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30340,7 +30342,7 @@ GameObject:
   - component: {fileID: 7109612757518328132}
   - component: {fileID: 7109612757518328155}
   m_Layer: 5
-  m_Name: Red
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30865,7 +30867,7 @@ GameObject:
   - component: {fileID: 7109612757587810298}
   - component: {fileID: 7109612757587810276}
   m_Layer: 5
-  m_Name: Girl
+  m_Name: girl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

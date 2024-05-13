@@ -71,7 +71,6 @@ public class LetterHunt : MonoBehaviour
 
 
 
-
     void Start()
     {
 
@@ -83,7 +82,7 @@ public class LetterHunt : MonoBehaviour
         //Main_Blended.OBJ_main_blended.levelno = 3;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
-        // GetData(qIndex);
+        GetData(qIndex);
         GetAdditionalData();
         AssignData();
         #endregion
@@ -120,10 +119,10 @@ public class LetterHunt : MonoBehaviour
                 ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answer: TXT_FormedWord.text);
 
                 if (qIndex < ACA_Words.Length - 1)
+                {
                     qIndex++;
-
-                GetData(qIndex);
-
+                    GetData(qIndex);
+                }
 
                 for (int i = 0; i < letterImageIndexList.Count; i++) { letterImageIndexList[i].color = CLR_Correct; }
 
@@ -156,6 +155,8 @@ public class LetterHunt : MonoBehaviour
 
         if (I_CurrentIndex >= STRA_Words.Length)
         {
+            G_TransparentScreen.SetActive(true);
+            BlendedOperations.instance.NotifyActivityCompleted();
             Invoke(nameof(ShowActivityCompleted), 2f);
             return;
         }

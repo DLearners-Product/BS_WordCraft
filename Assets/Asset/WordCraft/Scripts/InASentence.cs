@@ -59,7 +59,7 @@ public class InASentence : MonoBehaviour
         //Main_Blended.OBJ_main_blended.levelno = 3;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
-        // GetData(qIndex);
+        GetData(qIndex);
         GetAdditionalData();
         AssignData();
         #endregion
@@ -136,6 +136,7 @@ public class InASentence : MonoBehaviour
 
     private void ShowActivityCompleted()
     {
+        BlendedOperations.instance.NotifyActivityCompleted();
         G_ActivityCompleted.SetActive(true);
     }
 
