@@ -822,7 +822,6 @@ public class Main_Blended : MonoBehaviour
         {
             Destroy(G_currenlevel);
         }
-        // var currentLevel = Instantiate(GA_levelsIG[levelno]);
         var currentLevel = Instantiate(MainBlendedData.instance.slideDatas[levelno].slideObject);
         currentLevel.transform.SetParent(GameObject.Find("Game_Panel").transform, false);
         currentLevel.transform.SetAsFirstSibling();
@@ -890,24 +889,27 @@ public class Main_Blended : MonoBehaviour
 
     public void THI_videoSlidesPausePlay()
     {
-        Videoplayerinlevel = GameObject.Find("Video Player").GetComponent<VideoPlayer>();
-        if (B_pause)
+        for (int i = 0; i < HAS_VIDEO.Length; i++)
         {
-            if (Videoplayerinlevel != null)
+            if (HAS_VIDEO[i] == true)
             {
-                // Debug.Log("Play video");
-                Videoplayerinlevel.Play();
-                B_pause = true;
-            }
-        }
-        else
-        {
-            // Debug.Log("Pause Bool false");
-            if (Videoplayerinlevel != null)
-            {
-                //   Debug.Log("Pause Video");
-                Videoplayerinlevel.Pause();
-                B_pause = false;
+                Videoplayerinlevel = GameObject.Find("Video Player").GetComponent<VideoPlayer>();
+                if (!B_pause)
+                {
+                    if (Videoplayerinlevel != null)
+                    {
+                        Videoplayerinlevel.Pause();
+                        B_pause = true;
+                    }
+                }
+                else
+                {
+                    if (Videoplayerinlevel != null)
+                    {
+                        Videoplayerinlevel.Play();
+                        B_pause = false;
+                    }
+                }
             }
         }
     }

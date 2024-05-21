@@ -55,6 +55,11 @@ public class PictureSentence : MonoBehaviour
     {
         I_CurrentIndex++;
 
+        if (I_CurrentIndex == SPRA_Images.Length)
+        {
+            return;
+        }
+
         ShowImageAndText();
     }
 

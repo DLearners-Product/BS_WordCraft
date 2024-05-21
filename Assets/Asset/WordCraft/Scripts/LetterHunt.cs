@@ -112,11 +112,17 @@ public class LetterHunt : MonoBehaviour
 
         if (TXT_FormedWord.text.Length == STRA_Words[I_CurrentIndex].Length)
         {
-            if (TXT_FormedWord.text.ToString().Equals(STRA_Words[I_CurrentIndex]))
+            if (TXT_FormedWord.text.ToString().Equals(STRA_Words[qIndex]))
             {
                 //*correct answer
                 // ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(TXT_FormedWord.text.ToString()));
                 ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answer: TXT_FormedWord.text);
+
+                for (int i = 0; i < letterImageIndexList.Count; i++) { letterImageIndexList[i].color = CLR_Correct; }
+
+                PS_CorrectEffect.Play();
+                AudioManager.Instance.PlaySFX(AC_Correct);
+                G_TransparentScreen.SetActive(true);
 
                 if (qIndex < ACA_Words.Length - 1)
                 {
@@ -124,11 +130,6 @@ public class LetterHunt : MonoBehaviour
                     GetData(qIndex);
                 }
 
-                for (int i = 0; i < letterImageIndexList.Count; i++) { letterImageIndexList[i].color = CLR_Correct; }
-
-                PS_CorrectEffect.Play();
-                AudioManager.Instance.PlaySFX(AC_Correct);
-                G_TransparentScreen.SetActive(true);
                 Invoke(nameof(GotoNextWord), 2.5f);
             }
             else
@@ -157,7 +158,7 @@ public class LetterHunt : MonoBehaviour
         {
             G_TransparentScreen.SetActive(true);
             BlendedOperations.instance.NotifyActivityCompleted();
-            Invoke(nameof(ShowActivityCompleted), 2f);
+            Invoke(nameof(ShowActivityCompleted), 0.5f);
             return;
         }
 
@@ -198,7 +199,6 @@ public class LetterHunt : MonoBehaviour
     {
         G_ActivityCompleted.SetActive(true);
     }
-
 
 
     void OnDisable()

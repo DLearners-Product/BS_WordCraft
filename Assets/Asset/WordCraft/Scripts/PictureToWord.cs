@@ -116,7 +116,7 @@ public class PictureToWord : MonoBehaviour
         IF_1Answered = false;
 
         #region DataSetter
-        //Main_Blended.OBJ_main_blended.levelno = 3;
+        // Main_Blended.OBJ_main_blended.levelno = 6;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
         GetData(qIndex);
